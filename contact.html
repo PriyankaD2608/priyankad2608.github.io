@@ -1,14 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Contact | Priyanka Dhamande</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+
 <header class="header">
-  <nav class="nav">
-    <div class="logo">PORTFOLIO.</div>
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="experience.html">Experience</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="testimonials.html">Testimonials</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <button id="theme-toggle">☀️</button>
-  </nav>
+    <nav class="nav">
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="experience.html">Experience</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="testimonials.html">Testimonials</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+    </nav>
 </header>
+
+<div class="contact-page">
+
+    <h1 class="dynamic-heading">
+        <span id="typed-text"></span>
+    </h1>
+
+    <p class="typing-subtext" id="subtext"></p>
+
+    <p class="availability">🟢 Currently Open to Opportunities</p>
+
+    <div class="contact-tiles">
+        
+        <a href="https://github.com/PriyankaD2608" target="_blank" class="tile">💻 GitHub</a>
+        <a href="https://www.linkedin.com/in/priyanka-dhamande-77610832b" target="_blank" class="tile">🔗 LinkedIn</a>
+    </div>
+
+    <div class="reason-box">
+        <p>What are you reaching out for?</p>
+        <div class="reason-options">
+            <button type="button">Collaboration</button>
+            <button type="button">Internship Opportunity</button>
+            <button type="button">Project Discussion</button>
+            <button type="button">Just Saying Hi</button>
+        </div>
+    </div>
+
+    <!-- GOOGLE FORM CONNECTED FORM -->
+    <form action="https://docs.google.com/forms/d/e/1FAIpQLSeXSyPIeDS1ENQzfZ-MAEXPUp71M7t3kSyv0kOiYVTh3sLP7Q/formResponse"
+          method="POST"
+          target="hidden_iframe"
+          class="chat-form">
+
+        <div class="chat-bubble">Hi! What's your name?</div>
+        <input type="text" name="entry.2005620554" placeholder="Your Name" required>
+
+        <div class="chat-bubble">Where can I reply?</div>
+        <input type="email" name="entry.1045781291" placeholder="Your Email" required>
+
+        <div class="chat-bubble">Tell me about your message</div>
+        <textarea name="entry.839337160" placeholder="Type your message..." required></textarea>
+
+        <button type="submit" class="btn primary magnetic">Send Message</button>
+        <p class="microcopy">Thank you </p>
+    </form>
+
+    <iframe name="hidden_iframe" style="display:none;"></iframe>
+
+</div>
+<div class="custom-alert" id="customAlert">
+    <span class="alert-icon"></span>
+    <span class="alert-message">Message sent successfully!</span>
+    <button class="alert-close" onclick="closeAlert()">×</button>
+</div>
+
+<script>
+const form = document.querySelector(".chat-form");
+const iframe = document.querySelector("iframe[name='hidden_iframe']");
+const alertBox = document.getElementById("customAlert");
+
+let formSubmitted = false;
+
+form.addEventListener("submit", function () {
+    formSubmitted = true;
+});
+
+iframe.addEventListener("load", function () {
+    if (formSubmitted) {
+        showAlert("Message sent successfully!");
+        form.reset();
+        formSubmitted = false;
+    }
+});
+
+function showAlert(message) {
+    alertBox.querySelector(".alert-message").textContent = message;
+    alertBox.style.display = "flex";
+
+    // allow display to apply before animation
+    setTimeout(() => {
+        alertBox.classList.add("show");
+    }, 10);
+
+    setTimeout(closeAlert, 4000);
+}
+
+function closeAlert() {
+    alertBox.classList.remove("show");
+    setTimeout(() => {
+        alertBox.style.display = "none";
+    }, 300);
+}
+</script>
+
+
+
+<script src="create.js"></script>
+<footer class="footer">
+    <div class="footer-content">
+        <h3>Priyanka Dhamande</h3>
+        <p>Computer Science (Data Science) Student</p>
+
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+
+        <p class="copyright">© 2026 Priyanka Dhamande. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>
+
