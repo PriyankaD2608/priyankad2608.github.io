@@ -697,3 +697,99 @@ body {
     color: #666;
     margin-top: 10px;
 }
+
+/* ================= GRAPHICS GALLERY ================= */
+.graphics-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: pointer;
+    border: 1.5px solid rgba(108, 255, 143, 0.25);
+    transition: 0.3s ease;
+    aspect-ratio: 4 / 5; 
+    background: #151922;
+}
+
+.gallery-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s ease;
+}
+
+.gallery-item:hover .gallery-thumb {
+    transform: scale(1.08);
+}
+
+.gallery-item .overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: 0.3s ease;
+}
+
+.gallery-item:hover .overlay {
+    opacity: 1;
+}
+
+.gallery-item .overlay span {
+    color: var(--accent);
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid var(--accent);
+    padding: 8px 18px;
+    border-radius: 30px;
+    background: rgba(13, 17, 23, 0.7);
+}
+
+/* ================= LIGHTBOX MODAL ================= */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(108,255,143,0.3);
+    animation: fadeIn 0.3s ease;
+    object-fit: contain;
+}
+
+.close-lightbox {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    color: white;
+    font-size: 45px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-lightbox:hover {
+    color: var(--accent);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}

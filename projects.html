@@ -24,59 +24,83 @@
 
 <div class="projects-page">
 
-    <h1 class="section-heading">🚀 My Projects</h1>
+    <h1 class="section-heading">💻 Tech Projects</h1>
 
     <div class="projects-grid">
 
-        <!-- HARDWARE PROJECT -->
+        <!-- PROJECT UNNAT -->
         <div class="project-card">
-            <h2>Smart Safety Hardware System</h2>
-            <p class="project-type">Hardware + Embedded System</p>
+            <h2>Project_unnat</h2>
+            <p class="project-type">GovTech | TypeScript</p>
 
             <p class="project-desc">
-                Designed a safety-focused hardware solution that monitors environmental
-                conditions and detects potential hazards in real-time. The system uses
-                sensors and microcontroller integration to improve response time and
-                enhance user safety.
+                Multilingual Citizen Complaint & Governance CRM. A comprehensive platform designed for streamlining citizen feedback and government responses.
             </p>
 
             <ul class="project-features">
-                <li>Real-time hazard detection using sensors</li>
-                <li>Microcontroller-based alert system</li>
-                <li>Focused on preventive safety measures</li>
+                <li>Developed using TypeScript</li>
+                <li>Focuses on Governance and CRM solutions</li>
+                <li>Streamlines multilingual citizen complaints</li>
             </ul>
 
             <div class="project-links">
-                <a href="https://github.com/YOUR-USERNAME/hardware-safety-project" target="_blank" class="btn secondary">
+                <a href="https://github.com/PriyankaD2608/Project_unnat" target="_blank" class="btn secondary">
                     View Code on GitHub
                 </a>
             </div>
         </div>
 
-        <!-- FULL STACK WEBSITE PROJECT -->
+        <!-- PROJECT DRISHTII -->
         <div class="project-card">
-            <h2>Full Stack Web Application</h2>
-            <p class="project-type">Frontend + Backend Development</p>
+            <h2>Drishtii</h2>
+            <p class="project-type">Data Extraction | TypeScript</p>
 
             <p class="project-desc">
-                Built a dynamic full-stack website with both frontend user interface and
-                backend functionality. The project focuses on responsive design,
-                data handling, and smooth user experience.
+                A Physical Data Extraction System Architecture that automatically scans, reads, and extracts custom-specific information from physical documents.
             </p>
 
             <ul class="project-features">
-                <li>Responsive frontend using HTML, CSS, JavaScript</li>
-                <li>Backend logic and data management</li>
-                <li>User interaction and dynamic content</li>
+                <li>Built with TypeScript</li>
+                <li>Automated scanning and data extraction</li>
+                <li>Custom-specific information retrieval from physical sources</li>
             </ul>
 
             <div class="project-links">
-                <a href="https://github.com/YOUR-USERNAME/fullstack-website-project" target="_blank" class="btn secondary">
+                <a href="https://github.com/PriyankaD2608/Drishtii" target="_blank" class="btn secondary">
                     View Code on GitHub
                 </a>
             </div>
         </div>
 
+    </div>
+
+    <!-- GRAPHICS SECTION -->
+    <h1 class="section-heading" style="margin-top: 60px;">🎨 Graphics Work</h1>
+    
+    <div class="graphics-gallery">
+        <!-- Graphic 1: Gym Start Today -->
+        <div class="gallery-item" onclick="openLightbox('gym1.jpg')">
+            <img src="gym1.jpg" alt="Be Your Own Hero" class="gallery-thumb">
+            <div class="overlay"><span>View Full</span></div>
+        </div>
+
+        <!-- Graphic 2: Gym Zumba -->
+        <div class="gallery-item" onclick="openLightbox('gym2.jpg')">
+            <img src="gym2.jpg" alt="Zumba Join Class" class="gallery-thumb">
+            <div class="overlay"><span>View Full</span></div>
+        </div>
+
+        <!-- Graphic 3: Gym Fitness -->
+        <div class="gallery-item" onclick="openLightbox('gym3.jpg')">
+            <img src="gym3.jpg" alt="Gym and Fitness" class="gallery-thumb">
+            <div class="overlay"><span>View Full</span></div>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-lightbox">&times;</span>
+        <img id="lightbox-img" class="lightbox-content" onclick="event.stopPropagation();">
     </div>
 
 </div>
@@ -102,6 +126,7 @@
     </div>
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>
 
