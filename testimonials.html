@@ -70,7 +70,7 @@
     <input type="text" id="reviewRole" placeholder="Your Role (e.g. Mentor, Colleague)" required>
     <textarea id="reviewText" placeholder="Write your review..." required></textarea>
 
-    <button onclick="addReview()" class="btn primary">Submit Review</button>
+    <button id="submitReviewBtn" class="btn primary">Submit Review</button>
 </div>
 </div>
 <footer class="footer">
@@ -95,6 +95,83 @@
     </div>
 </footer>
 
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBACX8A8wVQKCJYe4WYmr3Xd-YeJszRcQ0",
+    authDomain: "priyanka-portfolio-a3d67.firebaseapp.com",
+    projectId: "priyanka-portfolio-a3d67",
+    storageBucket: "priyanka-portfolio-a3d67.firebasestorage.app",
+    messagingSenderId: "666618114092",
+    appId: "1:666618114092:web:7b99ab4455b44880d82189"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const testimonialsRef = collection(db, "testimonials");
+
+  const q = query(testimonialsRef, orderBy("timestamp", "desc"));
+  onSnapshot(q, (snapshot) => {
+      const grid = document.querySelector('.testimonials-grid');
+      document.querySelectorAll('.fetched-review').forEach(e => e.remove());
+
+      snapshot.forEach((doc) => {
+          const data = doc.data();
+          const initial = data.name ? data.name.charAt(0).toUpperCase() : '?';
+          const cardHTML = `
+              <div class="testimonial-card fetched-review" style="animation: fadeIn 0.5s ease;">
+                  <p class="quote">“${data.text}”</p>
+                  <div class="person">
+                      <div class="avatar">${initial}</div>
+                      <div>
+                          <h3>${data.name}</h3>
+                          <span>${data.role}</span>
+                      </div>
+                  </div>
+              </div>
+          `;
+          grid.insertAdjacentHTML('beforeend', cardHTML);
+      });
+  }, (error) => {
+      console.warn("Firebase rule block or uninitialized DB:", error);
+  });
+
+  document.getElementById('submitReviewBtn').addEventListener('click', async () => {
+      const nameInput = document.getElementById('reviewName');
+      const roleInput = document.getElementById('reviewRole');
+      const textInput = document.getElementById('reviewText');
+
+      const name = nameInput.value.trim();
+      const role = roleInput.value.trim();
+      const text = textInput.value.trim();
+
+      if (!name || !role || !text) {
+          alert("Please fill in all fields.");
+          return;
+      }
+
+      document.getElementById('submitReviewBtn').innerText = "Submitting...";
+
+      try {
+          await addDoc(testimonialsRef, {
+              name: name,
+              role: role,
+              text: text,
+              timestamp: serverTimestamp()
+          });
+          nameInput.value = '';
+          roleInput.value = '';
+          textInput.value = '';
+          setTimeout(() => alert("Review published globally!"), 100);
+      } catch (err) {
+          console.error("Error writing document: ", err);
+          alert("Database Error: Make sure Firestore Database is created in your Firebase Console and rules are set to True.");
+      }
+      document.getElementById('submitReviewBtn').innerText = "Submit Review";
+  });
+</script>
 <script src="script.js"></script>
 </body>
 </html>
