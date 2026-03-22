@@ -298,11 +298,20 @@ body {
 
     .hero-left {
         width: 100%;
-        padding: 40px;
+        padding: 40px 20px 20px 20px;
         text-align: center;
     }
 
     .hero-right {
+        display: flex;
+        width: 100%;
+        padding: 20px 0 60px 0;
+    }
+    .honeycomb {
+        transform: scale(0.68);
+        margin-top: 0;
+    }
+    .eco-card {
         display: none;
     }
 
@@ -310,12 +319,22 @@ body {
         position: relative;
         left: 0;
         transform: none;
-        height: 350px;
+        height: 300px;
         margin: 0 auto;
     }
 
     .hero-buttons {
         justify-content: center;
+    }
+    .section-heading {
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
+    .experience-grid, .projects-grid, .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+    .experience-page, .projects-page, .testimonials-page, .about-page, .contact-page {
+        padding: 80px 20px;
     }
 }
 
