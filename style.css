@@ -152,16 +152,16 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 15vh;
+    margin-top: 8vh;
     z-index: 4;
     position: relative;
-    transform: scale(0.9);
+    transform: scale(0.85);
 }
 
 .honeycomb-row {
     display: flex;
     justify-content: center;
-    margin-bottom: -18px; 
+    margin-bottom: -10px; 
 }
 
 .hex-wrapper {
@@ -172,7 +172,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 5px; 
+    margin: 0 8px; 
 }
 
 .hex-inner {
