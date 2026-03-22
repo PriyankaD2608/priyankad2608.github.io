@@ -304,12 +304,19 @@ body {
 
     .hero-right {
         display: flex;
-        width: 100%;
+        width: 100vw;
+        overflow: hidden;
+        box-sizing: border-box;
         padding: 20px 0 60px 0;
     }
     .honeycomb {
-        transform: scale(0.68);
+        transform: scale(0.85);
+        transform-origin: top center;
         margin-top: 0;
+        width: 100%;
+    }
+    .honeycomb-row {
+        margin-bottom: -15px; 
     }
     .eco-card {
         display: none;
