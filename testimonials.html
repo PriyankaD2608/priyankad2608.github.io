@@ -117,14 +117,15 @@
       const grid = document.querySelector('.testimonials-grid');
       document.querySelectorAll('.fetched-review').forEach(e => e.remove());
 
+      let newHTML = "";
       snapshot.forEach((doc) => {
           const data = doc.data();
           const initial = data.name ? data.name.charAt(0).toUpperCase() : '?';
-          const cardHTML = `
-              <div class="testimonial-card fetched-review" style="animation: fadeIn 0.5s ease;">
+          newHTML += `
+              <div class="testimonial-card fetched-review" style="animation: fadeIn 0.5s ease; border: 1px solid var(--accent);">
                   <p class="quote">“${data.text}”</p>
                   <div class="person">
-                      <div class="avatar">${initial}</div>
+                      <div class="avatar" style="background: var(--accent); color: #000;">${initial}</div>
                       <div>
                           <h3>${data.name}</h3>
                           <span>${data.role}</span>
@@ -132,8 +133,8 @@
                   </div>
               </div>
           `;
-          grid.insertAdjacentHTML('beforeend', cardHTML);
       });
+      grid.insertAdjacentHTML('afterbegin', newHTML);
   }, (error) => {
       console.warn("Firebase rule block or uninitialized DB:", error);
   });
